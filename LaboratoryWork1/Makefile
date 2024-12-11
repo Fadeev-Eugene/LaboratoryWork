@@ -1,23 +1,16 @@
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wpedantic -std=c++17
-ASTYLE = astyle -A1 -s4
 TARGET = main
-SOURCES = main.cpp
+SOURCES = main.cpp BMPImage.cpp LoadSaveFuncs.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(TARGET)
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-	
-run: $(TARGET)
-	/usr/bin/time -v ./$(TARGET)
-
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-format:
-	$(ASTYLE) $(SOURCES)
+%.o: %.cpp %.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
