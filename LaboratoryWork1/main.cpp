@@ -35,7 +35,7 @@ int main()
         image.rotate90Clockwise();
         saveBMP("rotated_clockwise.bmp", image);
         std::cout<<"rotated_clockwise.bmp is created"<<std::endl;
-        image.applyGaussianFilter(3, 1.0);
+        image.applyGaussianFilter(size, sigma);
         saveBMP("gaussian_filtered_clockwise.bmp", image);
         std::cout<<"gaussian_filtered_clockwise.bmp is created"<<std::endl;
     }
@@ -45,7 +45,7 @@ int main()
         image2.rotate90CounterClockwise();
         saveBMP("rotated_counterclockwise.bmp", image2);
         std::cout<<"rotated_counterclockwise.bmp is created"<<std::endl;
-        image2.applyGaussianFilter(3, 1.0);
+        image2.applyGaussianFilter(size, sigma);
         saveBMP("gaussian_filtered_counterclockwise.bmp", image2);
         std::cout<<"gaussian_filtered_counterclockwise.bmp is created"<<std::endl;
     }
