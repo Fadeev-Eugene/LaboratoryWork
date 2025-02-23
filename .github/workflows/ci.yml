@@ -13,8 +13,11 @@ jobs:
     - name: Install dependencies
       run: sudo apt update && sudo apt install -y g++ make libgtest-dev
 
+    - name: Move to project directory
+      run: cd LaboratoryWork2
+
     - name: Build project
-      run: make
+      run: cd LaboratoryWork2 && make
 
     - name: Run tests
-      run: ./tests
+      run: cd LaboratoryWork2 && ./tests
