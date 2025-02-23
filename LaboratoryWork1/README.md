@@ -9,5 +9,5 @@ Work with BMP file. This programm reads a 24 bit per pixel BMP image and apply 9
 make
 ## Run
 ./main
-##Clean
+## Clean
 make clean
