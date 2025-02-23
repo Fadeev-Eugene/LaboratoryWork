@@ -1,0 +1,23 @@
+name: C++ CI with Make
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt update && sudo apt install -y g++ make libgtest-dev
+
+    - name: Move to project directory
+      run: cd LaboratoryWork2
+
+    - name: Build project
+      run: cd LaboratoryWork2 && make
+
+    - name: Run tests
+      run: cd LaboratoryWork2 && ./tests
