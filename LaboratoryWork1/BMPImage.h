@@ -8,7 +8,7 @@
 #include <vector>
 #include <string>
 #include <cmath>
-
+#include <cstdint>
 
 struct Pixel
 {
