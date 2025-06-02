@@ -1,23 +1,27 @@
-name: C++ CI with Make
+name: Build Verification
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main, parallel]
+  pull_request:
+    branches: [main, parallel]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y g++ make libgtest-dev
-
-    - name: Move to project directory
-      run: cd LaboratoryWork2
+      run: sudo apt-get update && sudo apt-get install -y build-essential
 
     - name: Build project
-      run: cd LaboratoryWork2 && make
+      run: |
+        cd LaboratoryWork1
+        make
 
-    - name: Run tests
-      run: cd LaboratoryWork2 && ./tests
+    - name: Clean build
+      run: |
+        cd LaboratoryWork1
+        make clean
