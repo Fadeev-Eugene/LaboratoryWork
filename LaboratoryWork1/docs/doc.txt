@@ -1,0 +1,44 @@
+Project Overview
+This C++ application processes 24-bit BMP images with the following features:
+    Performs 90° rotations (clockwise and counter-clockwise)
+
+    Applies Gaussian blur filtering
+
+    Uses multithreading for parallel processing
+
+    Handles BMP format loading/saving
+
+Key Components
+    BMPImage Structure (BMPImage.h/cpp)
+        Stores image data: width, height, and pixel vector
+
+        Operations:
+            rotate90Clockwise() / rotate90CounterClockwise()
+
+            generateGaussianKernel() - Creates blur kernel matrix
+
+            applyGaussianFilter() - Applies blur using convolution
+
+    File I/O (LoadSaveFuncs.h/cpp)
+        loadBMP() - Reads BMP files with proper padding handling
+
+        saveBMP() - Writes valid BMP files with headers
+
+    Main Program (main.cpp)
+        Takes user input: filename, kernel size, sigma
+
+        Creates two processing threads:
+            Thread 1: Clockwise rotation + blur
+            Thread 2: Counter-clockwise rotation + blur
+
+        Uses mutexes for thread-safe console output
+
+Image Processing Details
+    Rotation: Transforms pixel matrix via coordinate mapping
+
+    Gaussian Blur:
+        Kernel size must be odd (3, 5, 7...)
+
+        Sigma controls blur intensity (higher = more blurry)
+
+        Edge pixels are not processed (kernel boundary limitation)
